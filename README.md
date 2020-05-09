@@ -18,11 +18,13 @@ After running the program you will be see a welcome screen with 2 options
 1) Server side login
 2) User login
 
-1) THE SERVER SIDE
+1) THE SERVER SIDE - 
+
 This is the program which can be used to add new entries to the existing databse..... 
 In the server side login, you will be taken to a login screen where you have to use the given credentials -----:>
 
 USERNAME :    admin
+
 PASSWORD :    vaccine
 
 After entering the password press enter and you will be taken to a menu screen for selecting the country in whose database you'd like to add the entry.
@@ -42,7 +44,8 @@ After selecting a country you will be shown the last 3 entries in the database t
 You will also be asked if you want to change the input, if not, Thank You for adding to the database......
 
 
-2) USER LOGIN
+2) USER LOGIN - 
+
 This will take the user to a country selection screen where you will be asked to choose a country whose data the person wants to access, and then given 3 choices to choose from, which are ----:>
 
 
@@ -66,5 +69,6 @@ And result in this following form will be shown->
 • The Growth Tracker --:>
     
     The growth tracker will use the data from the last 7 days and will predict the progression of the virus for the next 15 days...
+    
     The model was tested various times, to predict the cases for some past days and checking if the model was precise, and the results were approximately accurate comapared to the results of the tested date.
     
