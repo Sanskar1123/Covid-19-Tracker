@@ -25,6 +25,8 @@ node *create(){
   return list;
 }
 
+
+
 //taking inputs per node and storing in temp to return in 1 list
 corona *inputs(float date, int cases, int recovered, int deaths){
   corona *temp = (corona*)malloc(sizeof(corona));
@@ -98,8 +100,6 @@ int Cases(node *list, float start, float end){
   a = exp(a);
   b = exp(b);
 
-  printf("%f\n",b);
-
   int tmp = temp->cases;
   //to include the values of the last date entered adding the value
   int CaseCheck = tmp-variable;
@@ -145,79 +145,6 @@ int Recovered(node *list, float start, float end){
 }
 
 
-
-//file handling and linked list inputs
-void FileHandle(node *head){
-  float date, start1, end1;
-  float x=-1,y,sumxy=0,sumxx=0,sumy=0,sumx=0,value,n;
-  char country[50], countryName[50];
-  int deaths, recovered, cases;
-
-
-
-  strcpy(countryName, country_name);
-  strcpy(country, strcat(countryName, ".txt"));
-
-  //input into the linked list
-  FILE *fptr, *fptr1, *fptr2, *fptr3;
-  int c,d,e,f;
-  fptr = fopen(country,"r");
-  if(fptr == NULL){
-    printf("%s %s",countryName, country_name);
-    printf("Data for the entered country is not available yet...\n");
-    exit(1);
-  }
-
-  fptr1 = fopen(country,"r");
-  fptr2 = fopen(country,"r");
-  fptr3 = fopen(country,"r");
-  c = getc(fptr);
-
-  while(c != EOF){
-    fscanf(fptr,"%f %*d %*d %*d",&date);
-    fflush(stdin);
-    fscanf(fptr1,"%*f %*d %*d %d",&recovered);
-    fflush(stdin);
-    fscanf(fptr2,"%*f %*d %d %*d",&deaths);
-    fflush(stdin);
-    fscanf(fptr3,"%*f %d %*d %*d",&cases);
-    fflush(stdin);
-
-    y = cases;
-    x += 1;
-    y = log(y);
-    sumy+=y;
-    sumx+=x;
-    sumxx+= x*x;
-    sumxy+= x*y;
-
-    insert(head, inputs(date,cases,recovered,deaths));  //date, cases, recovered , death
-    c = getc(fptr);
-  }
-
-  n = x+1;
-  B = ((n*sumxy)-(sumx*sumy))/((n*sumxx)-(sumx*sumx));
-  A = (sumy - B*sumx)/n;
-  A = exp(A);
-  B = exp(B);
-
-  printf("\n%f\n",B);
-
-  fclose(fptr);
-  fclose(fptr1);
-  fclose(fptr2);
-  fclose(fptr3);
-
-  //mediocre effects
-  //display(head);
-  //delay(8);           // change the time here---------------------------------------
-  //clrscr();
-
-  start1 = startingDate(head);
-  end1 = endingDate(head);
-  printf("\nFor %s input dates between in the format DD.MM: %.1f and %.1f\n\n", countryName, start1, end1);
-
-}
 
 //Total number of cases at the end date
 int EndDate(node *list, float end){
@@ -292,5 +219,232 @@ bool check_end(node *list, float input, float open){
 
   if(checking == 0)
     return false;
+}
+
+
+
+
+//function to display the news
+void info()
+{
+  FILE *fptr;
+  char country[50],ch[500];
+
+  strcpy(country, country_name);
+  strcat(country, "info.txt");
+  printf("\n");
+  if((fptr=fopen(country,"r")) == NULL)
+  {
+    printf("\nNO DATA FOUND FOR THE COUNTRY !\n ");
+    exit(1);
+  }
+  else
+  {
+    fptr=fopen(country,"r");
+    while (fgets(ch,500,fptr) != NULL)
+    {
+      printf("%s", ch);
+    }
+    printf("\n\n");
+    fclose(fptr);
+  }
+}
+
+
+
+
+//function for data between the dates
+void betweenThe_dates(node *head){
+  float date, start1, end1;
+  //taking the users input for start date
+  float start, end;
+
+  printf("Enter the starting date in the format DD.MM: ");
+  scanf("%f",&start);
+  //check if a valid date is entered
+  int resultStart = check_start(head, start);
+  while(resultStart == 0 && start > 0){
+    printf("Invalid Input, Enter the date again or Enter 0 to exit the program...\n");
+    start1 = startingDate(head);
+    end1 = endingDate(head);
+    printf("\nInput dates in the format DD.MM between: %.1f and %.1f\n\n", start1, end1);
+    printf("Enter the starting date in the format DD.MM: ");
+    scanf("%f",&start);
+    resultStart = check_start(head, start);
+  }
+
+  // input for the ending date
+  fflush(stdin);
+  printf("Enter the end date in the format DD.MM: ");
+  scanf("%f",&end);
+  int resultEnd = check_end(head, end, start);
+  //printf("%d ", resultEnd);
+  while(resultEnd == 0 && end > 0){
+    printf("Invalid Input, Enter the date again or Enter 0 to exit the program...\n");
+    start1 = startingDate(head);
+    end1 = endingDate(head);
+    printf("\nInput dates in the format DD.MM between: %.1f and %.1f\n\n", start1, end1);
+    printf("Enter the end date in the format DD.MM: ");
+    scanf("%f",&end);
+    resultEnd = check_end(head, end, start);
+  }
+
+  //storing the result in variables
+  int TotalCases = Cases(head, start, end);
+  int TotalDeaths = Deaths(head, start, end);
+  int TotalRecovered = Recovered(head, start, end);
+
+  //printing the stored result
+  printf("Total cases: %d\t", EndDate(head, end));
+  printf("Cases in between: %d\t", TotalCases);
+  printf("  Deaths: %d\t", TotalDeaths);
+  printf("  Recovered: %d\n", TotalRecovered);
+  printf("The growth rate of the virus between this time was: %0.2f\n", b);
+  printf("The overall growth rate of the virus: %0.2f\n", B);
+  //display(head);
+  //deleteListDates(head);
+}
+
+//function for the prediction of data
+void prediction(node *list){
+    float value,t = 0,n,once = 1,x = -1,y, sumxy=0,sumxx=0,sumy=0,sumx=0,a,b, data[data_days];
+    corona *temp = list->head;
+    while(temp != NULL){
+        y = temp->cases;
+        y = log(y);
+            if(once)
+            {
+                for(int i = 0; i< data_days;i++)
+                    data[i]=y;
+                once = 0;
+            }
+            for(int i = 0; i<data_days-1;i++)
+                data[i]=data[i+1];
+            data[data_days-1] = y;
+            sumy = 0;
+            sumx = 0;
+            sumxx = 0;
+            sumxy = 0;
+            for(int i = 0; i<data_days;i++)
+            {
+                sumy += data[i];
+                sumx += i;
+                sumxx += (i)*(i);
+                sumxy += (i)*data[i];
+            }
+            temp = temp->next;
+    }
+
+        n = data_days;
+        b = ((n*sumxy)-(sumx*sumy))/((n*sumxx)-(sumx*sumx));
+        a = (sumy - b*sumx)/n;
+        a = exp(a);
+        if(exp(data[0])<a)
+            a = exp(data[0]);
+        b = exp(b);
+	int i=0;
+	float endDate = endingDate(list);
+    for(i = data_days; i<n+10; i++)
+    {
+        value =  a*pow(b, i);
+        printf("The total infected population on %0.1f.20 will be around:\t", endDate);
+        printf("%0.0f\n",value);
+        endDate += 1;
+    }
+}
+
+
+
+
+
+
+
+
+//file handling and linked list inputs
+void FileHandle(){
+  node *head = create();
+  float date, start1, end1;
+  float x=-1,y,sumxy=0,sumxx=0,sumy=0,sumx=0,value,n;
+  char country[50], countryName[50];
+  int deaths, recovered, cases;
+
+  display_welcome_menu();
+
+  strcpy(countryName, country_name);
+  strcpy(country, strcat(countryName, ".txt"));
+
+  //input into the linked list
+  FILE *fptr, *fptr1, *fptr2, *fptr3;
+  int c,d,e,f;
+  fptr = fopen(country,"r");
+  if(fptr == NULL){
+    printf("%s %s",countryName, country_name);
+    printf("Data for the entered country is not available yet...\n");
+    exit(1);
+  }
+
+  fptr1 = fopen(country,"r");
+  fptr2 = fopen(country,"r");
+  fptr3 = fopen(country,"r");
+  c = getc(fptr);
+
+  while(c != EOF){
+    fscanf(fptr,"%f %*d %*d %*d",&date);
+    fflush(stdin);
+    fscanf(fptr1,"%*f %*d %*d %d",&recovered);
+    fflush(stdin);
+    fscanf(fptr2,"%*f %*d %d %*d",&deaths);
+    fflush(stdin);
+    fscanf(fptr3,"%*f %d %*d %*d",&cases);
+    fflush(stdin);
+
+    y = cases;
+    x += 1;
+    y = log(y);
+    sumy+=y;
+    sumx+=x;
+    sumxx+= x*x;
+    sumxy+= x*y;
+
+    insert(head, inputs(date,cases,recovered,deaths));  //date, cases, recovered , death
+    c = getc(fptr);
+  }
+
+  n = x+1;
+  B = ((n*sumxy)-(sumx*sumy))/((n*sumxx)-(sumx*sumx));
+  A = (sumy - B*sumx)/n;
+  A = exp(A);
+  B = exp(B);
+
+  fclose(fptr);
+  fclose(fptr1);
+  fclose(fptr2);
+  fclose(fptr3);
+
+  //mediocre effects
+  //display(head);
+  //delay(8);           // change the time here---------------------------------------
+  //clrscr();
+
+  start1 = startingDate(head);
+  end1 = endingDate(head);
+  printf("\nFor %s input dates between in the format DD.MM: %.1f and %.1f\n\n", countryName, start1, end1);
+  betweenThe_dates(head);
+  puts("\n\n");
+  info();
+  prediction(head);
+}
+
+
+void *deleteListDates(node *list){
+    corona *temp = list->head;
+    corona *next;
+
+    while(temp != NULL){
+        next = temp->next;
+        free(temp);
+        temp = next;
+    }
+    list = NULL;
 }
 
