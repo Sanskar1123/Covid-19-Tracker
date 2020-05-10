@@ -22,6 +22,8 @@ After running the program you will be see a welcome screen with 2 options
 1) Server side login
 2) User login
 
+NOTE--> In all the menu pages you have to use ARROW KEYS, ENTER KEY and ESC KEY to choose the option or to go back to previous page.
+
 ------------------------------------------------------------------------------------------------------------------------------
 
 1) THE SERVER SIDE - 
@@ -91,16 +93,17 @@ You can press escape key on the keyboard after any of the before mentioned funct
 
 THINGS WE USED ----------::>
 
-1) To make the menu to navigate through the program, conio.h library functions, such as, gotoxy(); _getch(); , getc(); , switch statements etc were used.
+1) To make the menu to navigate through the program, conio.h library functions, such as, gotoxy(); _getch(); getc(); switch() statements etc were used.
 2) Data File Handling in C is used to read the data from the countries database that we made, analyse the data, calculate the growth rate of the disease.
 3) Linked list is used to store the data which is obtained from the database, and calculate the results which are displayed.
-4) A Mathematical algorithm was made to find how much growth will happen in the next few days, most accuracy achieved for data prediction within the next 15 days.
-5) Stack is used for the prediction of the growth of the virus , basically, to store the previous data and leave the data for the last 7 days.
+4) A Mathematical algorithm was made by us to find how much growth will happen in the next few days, most accuracy achieved for data prediction within the next 15 days.
+5) Stack is used for the prediction of the growth of the virus , basically, to store the previous data and pop the data for the last 7 days for better prediction of data.
 
-            The working of the mathematical function is included in the submission as an image (function.jpeg). 
+        The working of the mathematical function is included in the submission as a pdf file (model_explaination.pdf). 
     
-    
-    Make sure all the following files are included in the same folder as our main.c file ,    Korona.c         -----:>
+NOTE ->> We highly recommend you to go through the file (model_explaination.pdf) atleast once.    
+
+    Make sure all the following files are included in the same folder as our main.c file ,    Corona.c         -----:>
     
         1)  add.h
         2)  linked.h
@@ -124,9 +127,9 @@ THINGS WE USED ----------::>
 This project was made by        ----------::>
 
                                                                                                     
-                                    Arihant Jain        -          1910110085          -        
-                                    Bhaven Jain         -          1910110112          -        
-                                    Devyansh Sehgal     -          1910110134          -        
-                                    Sanskar Agarwal     -          1910110352          -        
-                                    Sarthak Khurana     -          1910110354          -        
+                                    Arihant Jain        -          1910110085                  
+                                    Bhaven Jain         -          1910110112                  
+                                    Devyansh Sehgal     -          1910110134                  
+                                    Sanskar Agarwal     -          1910110352                  
+                                    Sarthak Khurana     -          1910110354                  
                                                         

@@ -21,10 +21,13 @@ void delay(int seconds){
 void quit()
 {
     clrscr();
-    gotoxy(75,18);
+    gotoxy(40,18);
+    printf("Hope the world comes out of this crisis soon, and this program becomes of no use");
+    gotoxy(74,20);
     printf("!!!THANKYOU!!!");
-    gotoxy(72,20);
-    printf("STAY HOME STAY SAFE\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    gotoxy(71,22);
+    printf("STAY HOME, STAY SAFE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
     delay(3);
     exit(1);
 }
