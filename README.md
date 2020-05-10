@@ -9,23 +9,27 @@ We have made a Corona Virus Progression program, which shows the progress of the
 4) Spain
 5) China
 
-This program Excessively uses Linked list, file handling, the knowledge of the conio.h library etc. We have also used a exponential growth algorithm to determine the growth of the virus for the upcoming days.
+This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We have also used a exponential growth algorithm to determine the growth of the virus for the upcoming days.
 
 Make sure to include all the .h and .txt files in the same folder as the .c file.
+
+
+NOTE -----::>  WE HIGHLY RECOMMEND YOU TO USE THE FULL SCREEN FOR BEST VISUAL AESTHETICS.........   :)
+
 
 After running the program you will be see a welcome screen with 2 options 
 
 1) Server side login
 2) User login
 
------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 1) THE SERVER SIDE - 
 
 This is the program which can be used to add new entries to the existing databse..... 
 In the server side login, you will be taken to a login screen where you have to use the given credentials -----:>
 
-USERNAME :    admin
+USERNAME :    ADMIN
 
 PASSWORD :    vaccine
 
@@ -64,7 +68,7 @@ And result in this following form will be shown->
     Total cases: 82836    Cases in between: 82265      Deaths: 4616      Recovered: 78747
 
 
-• The information Center---:>
+• The Information Center---:>
     
     In this section, you will be shown the major news headlines for the selected country, like when was the first case appeared or the first death that was recorded etc.
     
@@ -75,7 +79,14 @@ And result in this following form will be shown->
     The model was tested various times, to predict the cases for some past days and checking if the model was precise, and the results were approximately accurate comapared to the results of the tested date.
     
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+You can press escape key on the keyboard after any of the before mentioned functions and you will be taken to the previous menu, to choose another feature that they want to explore or if the user wishes to Quit the application...
+
+    To Quit from the program press escape on the features menu screen,
+    Then the user will be given a warning to check whether if they really want to exit or not
+    Press ENTER key on this screen to Quit, and ESC key to stay in the program.
+
+
+------------------------------------------------------------------------------------------------------------------------------
 
 
 THINGS WE USED ----------::>
@@ -84,7 +95,38 @@ THINGS WE USED ----------::>
 2) Data File Handling in C is used to read the data from the countries database that we made, analyse the data, calculate the growth rate of the disease.
 3) Linked list is used to store the data which is obtained from the database, and calculate the results which are displayed.
 4) A Mathematical algorithm was made to find how much growth will happen in the next few days, most accuracy achieved for data prediction within the next 15 days.
-
+5) Stack is used for the prediction of the growth of the virus , basically, to store the previous data and leave the data for the last 7 days.
 
             The working of the mathematical function is included in the submission as an image (function.jpeg). 
     
+    
+    Make sure all the following files are included in the same folder as our main.c file ,    Korona.c         -----:>
+    
+        1)  add.h
+        2)  linked.h
+        3)  menu.h
+        4)  utilities.h
+        5)  india.txt                   //database for Total recordes in India till 9 May
+        6)  spain.txt                   //database for Total recordes in Spain till 9 May
+        7)  china.txt                   //database for Total recordes in China till 9 May
+        8)  italy.txt                   //database for Total recordes in Italy till 9 May
+        9)  usa.txt                     //database for Total recordes in USA till 9 May
+        10) indiainfo.txt               //Some main Headlines in India
+        11) spaininfo.txt               //Some main Headlines in Spain
+        12) chinainfo.txt               //Some main Headlines in China
+        13) italyinfo.txt               //Some main Headlines in Italy
+        14) usainfo.txt                 //Some main Headlines in USA
+        
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+This project was made by        ----------::>
+
+                                                                                                    
+                                    Arihant Jain        -          1910110085          -        
+                                    Bhaven Jain         -          1910110112          -        
+                                    Devyansh Seghal     -          1910110134          -        
+                                    Sanskar Agarwal     -          1910110352          -        
+                                    Sarthak Khurana     -          1910110354          -        
+                                                        
