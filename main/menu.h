@@ -11,16 +11,15 @@ bool check_forLogin(char username[50], char password[20]){
 
   int check_username = 0;
 
-    printf("%s",username1);
-    if( strcmp(username1,username) == 0){
-        check_username = 1;
-        if(strcmp(password1,password) == 0)
-            return 1;
-        else{
-            printf("Password does not match...\n");
-            return 0;
-        }
+  if( strcmp(username1,username) == 0){
+    check_username = 1;
+    if(strcmp(password1,password) == 0)
+        return 1;
+    else{
+        printf("Password does not match...\n");
+        return 0;
     }
+  }
   if(check_username == 0){
         printf("Username does not match...\n");
         return 0;
@@ -146,8 +145,6 @@ void display_country_menu(int check)
     {
         FileHandle();
     }
-
-        //userInput();
 }
 
 
@@ -185,6 +182,7 @@ void display_welcome_menu()
                     break;
         default :   goto menu_start;
     }
+
     switch(i-j)
     {
         case 1  :   display_server_menu();

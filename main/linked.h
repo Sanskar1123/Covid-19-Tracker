@@ -36,52 +36,9 @@ corona *inputs(float date, int cases, int recovered, int deaths){
   temp->death = deaths;
   return temp;
 }
-void display_user_menu(node *head)
-{
-    clrscr();
-    int j=15, i = j+1; char option;
-    user_menu :
-    gotoxy(70,10);
-    printf("%s's data",country_name);
-    gotoxy(30,j-1);
 
-    gotoxy(34,j+1);
-    printf("Information center");
-    gotoxy(34,j+2);
-    printf("Get information between selected dates");
-    gotoxy(34,j+3);
-    printf("Predict real-time data using Mathematical Model");
-    gotoxy(30,i);
-    printf("-->");
-    option = _getch();
-    switch(option)
-    {
-        case 27 :   display_welcome_menu();
-                    break;
-        case 80 :   if(i<j+3)
-                        i++;
-                    clrscr();
-                    goto user_menu;
-        case 72 :   if(i>j+1)
-                        i--;
-                    clrscr();
-                    goto user_menu;
-        case 13 :   gotoxy(30, j+5);
-                    break;
-        default :   goto user_menu;
-    }
-    switch(i-j)
-    {
-        case 1  :   info();
-                    break;
-        case 2  :   betweenThe_dates(head);
-                    break;
-        case 3  :   prediction(head);
-                    break;
-        default :   goto user_menu;
-    }
 
-}
+
 //starting the inserting process
 void InsertEnd(node *list, corona *input){
   corona *temp = list->head;
@@ -266,11 +223,24 @@ bool check_end(node *list, float input, float open){
     return false;
 }
 
+//function to delete list
+void *deleteListDates(node *list){
+    corona *temp = list->head;
+    corona *trav;
+
+    while(temp){
+        trav = temp->next;
+        free(temp);
+        temp = trav;
+    }
+
+    list->head = NULL;
+}
 
 
 
 //function to display the news
-void info()
+void info(node *head)
 {
   FILE *fptr;
   char country[50],ch[500];
@@ -286,6 +256,17 @@ void info()
   else
   {
     fptr=fopen(country,"r");
+
+  int TotalDeaths = Deaths(head, startingDate(head), endingDate(head));
+  int TotalRecovered = Recovered(head, startingDate(head), endingDate(head));
+  puts("");
+  //printing the stored result
+  printf("Total cases: %d\t", EndDate(head, endingDate(head)));
+  printf("  Deaths: %d\t", TotalDeaths);
+  printf("  Recovered: %d\n", TotalRecovered);
+  printf("The overall growth rate of the virus: %0.2f\n", B);
+  puts("\n\n");
+
     while (fgets(ch,500,fptr) != NULL)
     {
       printf("%s", ch);
@@ -293,6 +274,16 @@ void info()
     printf("\n\n");
     fclose(fptr);
   }
+
+  printf("\n\nPress to ESC to go back");
+    char back;
+    s:
+    back = _getch();
+    switch(back)
+    {
+        case 27 :   display_user_menu(head);
+        default :   goto s;
+    }
 }
 
 
@@ -350,7 +341,15 @@ void betweenThe_dates(node *head){
   printf("The growth rate of the virus between this time was: %0.2f\n", b);
   printf("The overall growth rate of the virus: %0.2f\n", B);
   //display(head);
-  //deleteListDates(head);
+  printf("\n\nPress to ESC to go back");
+    char back;
+    s:
+    back = _getch();
+    switch(back)
+    {
+        case 27 :   display_user_menu(head);
+        default :   goto s;
+    }
 }
 
 //function for the prediction of data
@@ -391,18 +390,18 @@ void prediction(node *list){
         if(exp(data[0])<a)
             a = exp(data[0]);
         b = exp(b);
-    int i=0;
-    float endDate = endingDate(list);
+	int i=0;
+	float endDate = endingDate(list);
 
-    int predict;
-    printf("Enter the number of days upto which you want to see the predicted data: ");
-    scanf("%d",&predict);
-    while(predict < 0 || predict > 15){
+	int predict;
+	printf("Enter the number of days upto which you want to see the predicted data: ");
+	scanf("%d",&predict);
+	while(predict < 0 || predict > 15){
         printf("The model predicts data upto 15 days with more accuracy.\n");
         printf("Please Enter number between 1 and 15: ");
-        scanf("%d",predict);
-    }
-    for(i = data_days; i<n+10; i++)
+        scanf("%d",&predict);
+	}
+    for(i = data_days; i<n+predict; i++)
     {
         value =  a*pow(b, i);
         printf("The total infected population on %0.1f.20 will be around:\t", endDate);
@@ -411,13 +410,67 @@ void prediction(node *list){
     }
 
     printf("\n\nThe predicted data is based on mathematical model and is subject to external circumstances....\n\n");
+    printf("\n\nPress to ESC to go back");
+
+    char back;
+    s:
+    back = _getch();
+    switch(back)
+    {
+        case 27 :   display_user_menu(list);
+        default :   goto s;
+    }
 }
 
 
+//display menu function for choices
+void display_user_menu(node *head)
+{
+    clrscr();
+    int j=15, i = j+1; char option;
+    user_menu :
+    gotoxy(70,10);
+    printf("%s's data",country_name);
+    gotoxy(30,j-1);
 
+    gotoxy(34,j+1);
+    printf("Information center");
+    gotoxy(34,j+2);
+    printf("Get information between selected dates");
+    gotoxy(34,j+3);
+    printf("Predict real-time data using Mathematical Model");
+    gotoxy(30,i);
+    printf("-->");
+    option = _getch();
+    switch(option)
+    {
+        case 27 :   deleteListDates(head);
+                    display_country_menu(0);
+                    break;
+        case 80 :   if(i<j+3)
+                        i++;
+                    clrscr();
+                    goto user_menu;
+        case 72 :   if(i>j+1)
+                        i--;
+                    clrscr();
+                    goto user_menu;
+        case 13 :   gotoxy(30, j+5);
+                    break;
+        default :   goto user_menu;
+    }
+    switch(i-j)
+    {
+        case 1  :   info(head);
+                    break;
+        case 2  :   betweenThe_dates(head);
+                    break;
+        case 3  :   prediction(head);
+                    break;
+        default :   goto user_menu;
+    }
 
-
-
+}
 
 
 //file handling and linked list inputs
@@ -427,8 +480,6 @@ void FileHandle(){
   float x=-1,y,sumxy=0,sumxx=0,sumy=0,sumx=0,value,n;
   char country[50], countryName[50];
   int deaths, recovered, cases;
-
-
 
   strcpy(countryName, country_name);
   strcpy(country, strcat(countryName, ".txt"));
@@ -486,23 +537,7 @@ void FileHandle(){
   //delay(8);           // change the time here---------------------------------------
   //clrscr();
 
-  start1 = startingDate(head);
-  end1 = endingDate(head);
-
   display_user_menu(head);
-}
-
-
-void *deleteListDates(node *list){
-    corona *temp = list->head;
-    corona *next;
-
-    while(temp != NULL){
-        next = temp->next;
-        free(temp);
-        temp = next;
-    }
-    list = NULL;
 }
 
 

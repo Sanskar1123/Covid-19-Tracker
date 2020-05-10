@@ -74,3 +74,17 @@ And result in this following form will be shown->
     
     The model was tested various times, to predict the cases for some past days and checking if the model was precise, and the results were approximately accurate comapared to the results of the tested date.
     
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+THINGS WE USED ----------::>
+
+1) To make the menu to navigate through the program, conio.h library functions, such as, gotoxy(); _getch(); , getc(); , switch statements etc were used.
+2) Data File Handling in C is used to read the data from the countries database that we made, analyse the data, calculate the growth rate of the disease.
+3) Linked list is used to store the data which is obtained from the database, and calculate the results which are displayed.
+4) A Mathematical algorithm was made to find how much growth will happen in the next few days, most accuracy achieved for data prediction within the next 15 days.
+
+
+            The working of the mathematical function is included in the submission as an image (function.jpeg). 
+    
