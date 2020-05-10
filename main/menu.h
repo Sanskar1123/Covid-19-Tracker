@@ -1,4 +1,17 @@
 
+//DISPLAY MENU FUNCTION
+int data_days=7;
+char country_name[50];
+COORD coord = {0,0};
+
+void gotoxy(int x, int y)
+{
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+}
+
+
 //login info check
 bool check_forLogin(char username[50], char password[20]){
 
@@ -21,20 +34,6 @@ bool check_forLogin(char username[50], char password[20]){
         printf("Username does not match...\n");
         return 0;
     }
-}
-
-
-
-//DISPLAY MENU FUNCTION
-int data_days=7;
-char country_name[50];
-COORD coord = {0,0};
-
-void gotoxy(int x, int y)
-{
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
 
 void display_server_menu()
@@ -90,19 +89,59 @@ void display_server_menu()
 
 
 
-void display_user_menu()
+void display_user_menu(node *head)
 {
     clrscr();
-    display_country_menu(0);
-}
+    int j=15, i = j+1; char option;
+    user_menu :
+    gotoxy(70,10);
+    printf("%s's data",country_name);
+    gotoxy(30,j-1);
+    printf("");
+    gotoxy(34,j+1);
+    printf("Information center");
+    gotoxy(34,j+2);
+    printf("Get information between selected dates");
+    gotoxy(34,j+3);
+    printf("Predict real-time data using Mathematical Model");
+    gotoxy(30,i);
+    printf("-->");
+    option = _getch();
+    switch(option)
+    {
+        case 27 :   display_welcome_menu();
+                    break;
+        case 80 :   if(i<j+3)
+                        i++;
+                    clrscr();
+                    goto user_menu;
+        case 72 :   if(i>j+1)
+                        i--;
+                    clrscr();
+                    goto user_menu;
+        case 13 :   gotoxy(30, j+5);
+                    break;
+        default :   goto user_menu;
+    }
+    switch(i-j)
+    {
+        case 1  :   info();
+                    break;
+        case 2  :   betweenThe_dates(head);
+                    break;
+        case 3  :   prediction(head);
+                    break;
+        default :   goto user_menu;
+    }
 
+}
 
 void display_country_menu(int check)
 {
     clrscr();
     int j=15,i=j+1;char option;
     menu_start :
-    gotoxy(33,10);
+    gotoxy(75,10);
     printf("!!!Welcome!!!\n");
     gotoxy(30,j-1);
     printf("Choose any country:-");
@@ -153,10 +192,15 @@ void display_country_menu(int check)
         default:    goto menu_start;
     }
 
-    if(check == 1 ){
+    if(check == 1 )
+    {
       function_add();
     }
-    else;
+    else
+    {
+        FileHandle();
+    }
+
         //userInput();
 }
 
@@ -201,7 +245,7 @@ void display_welcome_menu()
                     display_server_menu();
                     break;
         case 2  :   printf("CALL USER FUNCTION");
-                    display_user_menu();
+                    display_country_menu(0);
                     break;
         default :   goto menu_start;
     }
