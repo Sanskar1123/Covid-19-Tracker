@@ -1,11 +1,10 @@
 
-31 January 2020:- Spain confirmed its first COVID-19 case in La Gomera, Canary Islands.
-                  When a German tourist tested positive. Post-hoc genetic analysis has shown that at least 15 strains
-                  of the virus had been imported, and community transmission began by mid-February. By 13 March, cases
-                  had been confirmed in 50 provinces of the country.
+		31 January 2020:- Spain confirmed its first COVID-19 case in La Gomera, Canary Islands.
+		                  
+		                  When a German tourist tested positive. Post-hoc genetic analysis has shown that at least 15 strains of the virus had been imported, and community transmission began by mid-February. By 13 March, cases had been confirmed in 50 provinces of the country.
 
-3 March 2020   :- 1st death was reported. 
-
-14 March 2020  :- Curfew was imposed.Extensive exit restrictions have been in effect in Spain since then. The 46 million
-                  inhabitants are only allowed to leave their homes to get to work, do shopping, get medication or go for
-                  a walk with the dog. From march 14, all non-essential workers were to stay home for the next 14 days.
+		
+		3 March 2020   :- 1st death was reported.
+		 
+		
+		14 March 2020  :- Curfew was imposed.Extensive exit restrictions have been in effect in Spain since then. The 46 				   million inhabitants are only allowed to leave their homes to get to work, do shopping, get 					  medication or go for a walk with the dog. From march 14, all non-essential workers were to 					  stay home for the next 14 days.

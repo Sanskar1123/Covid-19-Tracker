@@ -31,6 +31,7 @@ void function_add(){
   printf("Stay Home, Stay Safe\n");
   delay(8);
   exit(-1);
+
 }
 
 
