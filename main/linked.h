@@ -468,7 +468,9 @@ void display_user_menu(node *head)
                         char o;
                         gotoxy(40,30);
                         y:
-                        printf("Are you sure you want to quit?(Press Enter/ESC to quit/continue)");
+                        printf("Are you sure you want to quit?");
+                        gotoxy(40,31);
+                        printf("(Press Enter to quit | Press ESC to continue exploring)");
                         o = _getch();
                         switch(o)
                         {
