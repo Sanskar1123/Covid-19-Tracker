@@ -63,39 +63,39 @@ void FileHandle1(node1 *head, char country[50]){
 
 
   //input into the linked list
-  FILE *fptr; //*fptr1, *fptr2, *fptr3, *fopen();
+  FILE *fptr,*fptr1, *fptr2, *fptr3, *fopen();
   int c,d,e,f;
   if((fptr = fopen(country,"r")) == NULL){
     printf("Data for the entered country is not available yet...\n");
     exit(1);
   }
 
-  //fptr1 = fopen(country,"r");
-  //fptr2 = fopen(country,"r");
-  //fptr3 = fopen(country,"r");
+  fptr1 = fopen(country,"r");
+  fptr2 = fopen(country,"r");
+  fptr3 = fopen(country,"r");
   c = getc(fptr);
 
   while(c != EOF){
-    fscanf(fptr,"%f %d %d %d",&date,&cases,&deaths,&recovered);
+    fscanf(fptr,"%f %*d %*d %*d",&date);
     fflush(stdin);
-    /*fscanf(fptr1,"%*f %*d %*d %d",&recovered);
+    fscanf(fptr1,"%*f %*d %*d %d",&recovered);
     fflush(stdin);
     fscanf(fptr2,"%*f %*d %d %*d",&deaths);
     fflush(stdin);
-    fscanf(fptr3,"%*f %d %*d %*d",&cases);*/
-    //fflush(stdin);
+    fscanf(fptr3,"%*f %d %*d %*d",&cases);
+    fflush(stdin);
     insert1(head, inputs1(date,cases,recovered,deaths));  //date, cases, recovered , death
     c = getc(fptr);
   }
   fclose(fptr);
-  //fclose(fptr1);
-  //fclose(fptr2);
-  //fclose(fptr3);
+  fclose(fptr1);
+  fclose(fptr2);
+  fclose(fptr3);
 }
 
 void *deleteList(node1 *list){
     corona1 *temp = list->head;
-    node1 *next;
+    corona1 *next;
 
     while(temp != NULL){
         next = temp->next;
@@ -167,6 +167,8 @@ void write(node1 *head, char country[50]){
   fclose(fptr);
   fflush(stdin);
 }
+
+
 
 //Displaying the last 3 elements
 void displayLast_3(node1 *list){
