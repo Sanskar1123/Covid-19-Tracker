@@ -4,12 +4,12 @@
 #include<time.h>
 #include<math.h>
 #include<stdbool.h>
-#include<windows.h>
-#include<conio.h>
-#include "add.h"
-#include "menu.h"
-#include "linked.h"
-#include "utilities.h"
+#include <windows.h>
+#include <conio.h>
+#include"add.h"
+#include"menu.h"
+#include"utilities.h"
+#include"linked.h"
 
 void function_add(){
   node1 *head = create1();
@@ -35,9 +35,11 @@ void function_add(){
 }
 
 
-void main()
-{
+void main(){
   clrscr();
   display_welcome_menu();
-
 }
+
+
+
+
