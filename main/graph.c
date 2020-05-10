@@ -10,23 +10,6 @@
 #include"menu.h"
 #include"linked.h"
 
-//clear the terminal screen function
-void clrscr(){
-    system("@cls||clear");
-}
-
-//time delay function
-void delay(int seconds){
-  int milli = 1000*seconds;    //change to 1000
-  clock_t start = clock();
-  while(clock() < start + milli);
-}
-
-void userInput(){
-    node *head = create();
-    FileHandle(head);
-}
-
 void function_add(){
   node1 *head = create1();
   printf("Hope you don't have to this for a long time.......\n\n");
@@ -50,7 +33,8 @@ void function_add(){
 }
 
 
-void main(){
+void main()
+{
   clrscr();
   display_welcome_menu();
 

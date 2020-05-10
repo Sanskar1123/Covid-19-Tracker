@@ -2,15 +2,6 @@
 //DISPLAY MENU FUNCTION
 int data_days=7;
 char country_name[50];
-COORD coord = {0,0};
-
-void gotoxy(int x, int y)
-{
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
-}
-
 
 //login info check
 bool check_forLogin(char username[50], char password[20]){
