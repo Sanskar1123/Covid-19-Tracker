@@ -17,7 +17,7 @@ Make sure to include all the .h and .txt files in the same folder as the .c file
 NOTE -----::>  WE HIGHLY RECOMMEND YOU TO USE THE FULL SCREEN FOR BEST VISUAL AESTHETICS.........   :)
 
 
-After running the program you will be see a welcome screen with 2 options 
+After running the program you will see a welcome screen with 2 options --:>
 
 1) Server side login
 2) User login
@@ -26,10 +26,10 @@ After running the program you will be see a welcome screen with 2 options
 
 1) THE SERVER SIDE - 
 
-This is the program which can be used to add new entries to the existing databse..... 
+This is the part of the program which can be used to add new entries to the existing databse..... 
 In the server side login, you will be taken to a login screen where you have to use the given credentials -----:>
 
-USERNAME :    ADMIN
+USERNAME :    ADMIN      //All Capital letters
 
 PASSWORD :    vaccine
 
