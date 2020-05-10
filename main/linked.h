@@ -36,7 +36,52 @@ corona *inputs(float date, int cases, int recovered, int deaths){
   temp->death = deaths;
   return temp;
 }
+void display_user_menu(node *head)
+{
+    clrscr();
+    int j=15, i = j+1; char option;
+    user_menu :
+    gotoxy(70,10);
+    printf("%s's data",country_name);
+    gotoxy(30,j-1);
 
+    gotoxy(34,j+1);
+    printf("Information center");
+    gotoxy(34,j+2);
+    printf("Get information between selected dates");
+    gotoxy(34,j+3);
+    printf("Predict real-time data using Mathematical Model");
+    gotoxy(30,i);
+    printf("-->");
+    option = _getch();
+    switch(option)
+    {
+        case 27 :   display_welcome_menu();
+                    break;
+        case 80 :   if(i<j+3)
+                        i++;
+                    clrscr();
+                    goto user_menu;
+        case 72 :   if(i>j+1)
+                        i--;
+                    clrscr();
+                    goto user_menu;
+        case 13 :   gotoxy(30, j+5);
+                    break;
+        default :   goto user_menu;
+    }
+    switch(i-j)
+    {
+        case 1  :   info();
+                    break;
+        case 2  :   betweenThe_dates(head);
+                    break;
+        case 3  :   prediction(head);
+                    break;
+        default :   goto user_menu;
+    }
+
+}
 //starting the inserting process
 void InsertEnd(node *list, corona *input){
   corona *temp = list->head;
@@ -368,7 +413,7 @@ void FileHandle(){
   char country[50], countryName[50];
   int deaths, recovered, cases;
 
-  display_welcome_menu();
+
 
   strcpy(countryName, country_name);
   strcpy(country, strcat(countryName, ".txt"));
@@ -428,11 +473,8 @@ void FileHandle(){
 
   start1 = startingDate(head);
   end1 = endingDate(head);
-  printf("\nFor %s input dates between in the format DD.MM: %.1f and %.1f\n\n", countryName, start1, end1);
-  betweenThe_dates(head);
-  puts("\n\n");
-  info();
-  prediction(head);
+
+  display_user_menu(head);
 }
 
 

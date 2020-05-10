@@ -89,52 +89,7 @@ void display_server_menu()
 
 
 
-void display_user_menu(node *head)
-{
-    clrscr();
-    int j=15, i = j+1; char option;
-    user_menu :
-    gotoxy(70,10);
-    printf("%s's data",country_name);
-    gotoxy(30,j-1);
-    printf("");
-    gotoxy(34,j+1);
-    printf("Information center");
-    gotoxy(34,j+2);
-    printf("Get information between selected dates");
-    gotoxy(34,j+3);
-    printf("Predict real-time data using Mathematical Model");
-    gotoxy(30,i);
-    printf("-->");
-    option = _getch();
-    switch(option)
-    {
-        case 27 :   display_welcome_menu();
-                    break;
-        case 80 :   if(i<j+3)
-                        i++;
-                    clrscr();
-                    goto user_menu;
-        case 72 :   if(i>j+1)
-                        i--;
-                    clrscr();
-                    goto user_menu;
-        case 13 :   gotoxy(30, j+5);
-                    break;
-        default :   goto user_menu;
-    }
-    switch(i-j)
-    {
-        case 1  :   info();
-                    break;
-        case 2  :   betweenThe_dates(head);
-                    break;
-        case 3  :   prediction(head);
-                    break;
-        default :   goto user_menu;
-    }
 
-}
 
 void display_country_menu(int check)
 {
@@ -241,11 +196,9 @@ void display_welcome_menu()
     }
     switch(i-j)
     {
-        case 1  :   printf("CALL ADD FUNCTION");
-                    display_server_menu();
+        case 1  :   display_server_menu();
                     break;
-        case 2  :   printf("CALL USER FUNCTION");
-                    display_country_menu(0);
+        case 2  :   display_country_menu(0);
                     break;
         default :   goto menu_start;
     }

@@ -52,6 +52,6 @@ void function_add(){
 
 void main(){
   clrscr();
-  FileHandle();
+  display_welcome_menu();
 
 }
