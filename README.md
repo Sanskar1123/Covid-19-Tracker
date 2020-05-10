@@ -126,7 +126,7 @@ This project was made by        ----------::>
                                                                                                     
                                     Arihant Jain        -          1910110085          -        
                                     Bhaven Jain         -          1910110112          -        
-                                    Devyansh Seghal     -          1910110134          -        
+                                    Devyansh Sehgal     -          1910110134          -        
                                     Sanskar Agarwal     -          1910110352          -        
                                     Sarthak Khurana     -          1910110354          -        
                                                         
