@@ -9,7 +9,7 @@ We have made a Corona Virus Progression program, which shows the progress of the
 4) Spain
 5) China
 
-This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We have also used a exponential growth algorithm to determine the growth of the virus for the upcoming days.
+This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We have also made a Mathematical algorithm to determine the growth of the virus for the upcoming days.
 
 Make sure to include all the .h and .txt files in the same folder as the .c file.
 
@@ -100,7 +100,7 @@ THINGS WE USED ----------::>
             The working of the mathematical function is included in the submission as an image (function.jpeg). 
     
     
-    Make sure all the following files are included in the same folder as our main.c file ,    Korona.c         -----:>
+    Make sure all the following files are included in the same folder as our main.c file ,    main.c         -----:>
     
         1)  add.h
         2)  linked.h
