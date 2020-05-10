@@ -17,13 +17,16 @@ bool check_forLogin(char username[50], char password[20]){
         return 1;
     else{
         printf("Password does not match...\n");
+        _getch();
         return 0;
     }
   }
   if(check_username == 0){
         printf("Username does not match...\n");
+        _getch();
         return 0;
     }
+
 }
 
 void display_server_menu()
@@ -66,8 +69,6 @@ void display_server_menu()
     //printf("%ld %s",username,password);
 
     int verify = check_forLogin(username,password);
-
-    _getch();
 
     if(verify == 1)
         display_country_menu(1);
