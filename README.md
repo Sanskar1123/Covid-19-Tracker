@@ -9,7 +9,7 @@ We have made a Corona Virus Progression program, which shows the progress of the
 4) Spain
 5) China
 
-This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We have also used a exponential growth algorithm to determine the growth of the virus for the upcoming days.
+This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We have also made a Mathematical algorithm to determine the growth of the virus for the upcoming days.
 
 Make sure to include all the .h and .txt files in the same folder as the .c file.
 
@@ -17,7 +17,7 @@ Make sure to include all the .h and .txt files in the same folder as the .c file
 NOTE -----::>  WE HIGHLY RECOMMEND YOU TO USE THE FULL SCREEN FOR BEST VISUAL AESTHETICS.........   :)
 
 
-After running the program you will be see a welcome screen with 2 options 
+After running the program you will see a welcome screen with 2 options --:>
 
 1) Server side login
 2) User login
@@ -28,10 +28,10 @@ NOTE--> In all the menu pages you have to use ARROW KEYS, ENTER KEY and ESC KEY 
 
 1) THE SERVER SIDE - 
 
-This is the program which can be used to add new entries to the existing databse..... 
+This is the part of the program which can be used to add new entries to the existing databse..... 
 In the server side login, you will be taken to a login screen where you have to use the given credentials -----:>
 
-USERNAME :    ADMIN
+USERNAME :    ADMIN      //All Capital letters
 
 PASSWORD :    vaccine
 
@@ -101,9 +101,13 @@ THINGS WE USED ----------::>
 
         The working of the mathematical function is included in the submission as a pdf file (model_explaination.pdf). 
     
+<<<<<<< HEAD
 NOTE ->> We highly recommend you to go through the file (model_explaination.pdf) atleast once.    
 
     Make sure all the following files are included in the same folder as our main.c file ,    Corona.c         -----:>
+=======
+    Make sure all the following files are included in the same folder as our main.c file ,    main.c         -----:>
+>>>>>>> c700805eefca36cb13392b72d53923a00858cccd
     
         1)  add.h
         2)  linked.h
