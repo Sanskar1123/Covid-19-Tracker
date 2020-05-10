@@ -6,7 +6,7 @@ char country_name[50];
 //login info check
 bool check_forLogin(char username[50], char password[20]){
 
-  char username1[] = "admin";
+  char username1[] = "ADMIN";
   char password1[] = "vaccine";
 
   int check_username = 0;
@@ -125,7 +125,7 @@ void display_country_menu(int check)
 
     switch(i-j)
     {
-        case 1 :    strcpy(country_name,"indiatest");
+        case 1 :    strcpy(country_name,"india");
                     break;
         case 2 :    strcpy(country_name,"china");
                     break;
