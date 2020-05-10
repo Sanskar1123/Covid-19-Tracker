@@ -274,7 +274,7 @@ void info()
 {
   FILE *fptr;
   char country[50],ch[500];
-
+  clrscr();
   strcpy(country, country_name);
   strcat(country, "info.txt");
   printf("\n");
@@ -303,7 +303,10 @@ void betweenThe_dates(node *head){
   float date, start1, end1;
   //taking the users input for start date
   float start, end;
-
+  clrscr();
+  start1 = startingDate(head);
+  end1 = endingDate(head);
+  printf("\nInput dates in the format DD.M between: %.1f and %.1f\n\n", start1, end1);
   printf("Enter the starting date in the format DD.MM: ");
   scanf("%f",&start);
   //check if a valid date is entered
@@ -338,7 +341,7 @@ void betweenThe_dates(node *head){
   int TotalCases = Cases(head, start, end);
   int TotalDeaths = Deaths(head, start, end);
   int TotalRecovered = Recovered(head, start, end);
-
+  puts("");
   //printing the stored result
   printf("Total cases: %d\t", EndDate(head, end));
   printf("Cases in between: %d\t", TotalCases);
@@ -354,6 +357,7 @@ void betweenThe_dates(node *head){
 void prediction(node *list){
     float value,t = 0,n,once = 1,x = -1,y, sumxy=0,sumxx=0,sumy=0,sumx=0,a,b, data[data_days];
     corona *temp = list->head;
+    clrscr();
     while(temp != NULL){
         y = temp->cases;
         y = log(y);
@@ -387,8 +391,17 @@ void prediction(node *list){
         if(exp(data[0])<a)
             a = exp(data[0]);
         b = exp(b);
-	int i=0;
-	float endDate = endingDate(list);
+    int i=0;
+    float endDate = endingDate(list);
+
+    int predict;
+    printf("Enter the number of days upto which you want to see the predicted data: ");
+    scanf("%d",&predict);
+    while(predict < 0 || predict > 15){
+        printf("The model predicts data upto 15 days with more accuracy.\n");
+        printf("Please Enter number between 1 and 15: ");
+        scanf("%d",predict);
+    }
     for(i = data_days; i<n+10; i++)
     {
         value =  a*pow(b, i);
@@ -396,6 +409,8 @@ void prediction(node *list){
         printf("%0.0f\n",value);
         endDate += 1;
     }
+
+    printf("\n\nThe predicted data is based on mathematical model and is subject to external circumstances....\n\n");
 }
 
 
@@ -489,4 +504,5 @@ void *deleteListDates(node *list){
     }
     list = NULL;
 }
+
 
