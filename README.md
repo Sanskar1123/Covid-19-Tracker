@@ -9,29 +9,25 @@ We have made a Corona Virus Progression program, which shows the progress of the
 4) Spain
 5) China
 
-This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We have also made a Mathematical algorithm to determine the growth of the virus for the upcoming days.
+This program Excessively uses Linked list, Stack, file handling, the knowledge of the conio.h library etc. We made a mathematical algorithm to determine the growth of the virus for the upcoming days, pretty accurate for upto 15 days.
 
 Make sure to include all the .h and .txt files in the same folder as the .c file.
 
-
 NOTE -----::>  WE HIGHLY RECOMMEND YOU TO USE THE FULL SCREEN FOR BEST VISUAL AESTHETICS.........   :)
 
+After running the program you will be see a welcome screen with 2 options 
 
-After running the program you will see a welcome screen with 2 options --:>
-
-1) Server side login
-2) User login
-
-NOTE--> In all the menu pages you have to use ARROW KEYS, ENTER KEY and ESC KEY to choose the option or to go back to previous page.
+1) Server Side Login
+2) User Login
 
 ------------------------------------------------------------------------------------------------------------------------------
 
 1) THE SERVER SIDE - 
 
-This is the part of the program which can be used to add new entries to the existing databse..... 
+This is the program which can be used to add new entries to the existing databse..... 
 In the server side login, you will be taken to a login screen where you have to use the given credentials -----:>
 
-USERNAME :    ADMIN      //All Capital letters
+USERNAME :    ADMIN
 
 PASSWORD :    vaccine
 
@@ -57,29 +53,36 @@ You will also be asked if you want to change the input, if not, Thank You for ad
 This will take the user to a country selection screen where you will be asked to choose a country whose data the person wants to access, and then given 3 choices to choose from, which are ----:>
 
 
-• The inBetween Dates Data:-
+• The inBetween Dates Data --:>
     
-    You will be asked to enter 2 dates ->
+    You will be asked to enter 2 dates and the range of the dates will also be displayed ->
     1) The starting date from which you want to see the data, to
     2) The date till which the data is to be accessed
 
-NOTE ----:>>>>    Please enter the date in the format DD.M (for example, 1.4 as in April 1st).
+NOTE ----:>    Please enter the date in the format DD.M (for example, 1.4 as in April 1st, 10.1 as in 10 April).
 
 And result in this following form will be shown->     
 
     Total cases: 82836    Cases in between: 82265      Deaths: 4616      Recovered: 78747
 
+Press ESC key to go back to the previos menu.
 
 • The Information Center---:>
     
     In this section, you will be shown the major news headlines for the selected country, like when was the first case appeared or the first death that was recorded etc.
+Press ESC key to go back to the previos menu.
     
 • The Growth Tracker --:>
     
     The growth tracker will use the data from the last 7 days and will predict the progression of the virus for the next 15 days...
     
     The model was tested various times, to predict the cases for some past days and checking if the model was precise, and the results were approximately accurate comapared to the results of the tested date.
-    
+
+Press ESC key to go back to the previos menu.
+
+
+
+How to get out of the application ---:> 
 
 You can press escape key on the keyboard after any of the before mentioned functions and you will be taken to the previous menu, to choose another feature that they want to explore or if the user wishes to Quit the application...
 
@@ -93,21 +96,15 @@ You can press escape key on the keyboard after any of the before mentioned funct
 
 THINGS WE USED ----------::>
 
-1) To make the menu to navigate through the program, conio.h library functions, such as, gotoxy(); _getch(); getc(); switch() statements etc were used.
+1) To make the menu to navigate through the program, conio.h library functions, such as, gotoxy(); _getch(); , getc(); , switch statements etc were used.
 2) Data File Handling in C is used to read the data from the countries database that we made, analyse the data, calculate the growth rate of the disease.
 3) Linked list is used to store the data which is obtained from the database, and calculate the results which are displayed.
-4) A Mathematical algorithm was made by us to find how much growth will happen in the next few days, most accuracy achieved for data prediction within the next 15 days.
-5) Stack is used for the prediction of the growth of the virus , basically, to store the previous data and pop the data for the last 7 days for better prediction of data.
+4) A Mathematical algorithm was made to find how much growth will happen in the next few days, most accuracy achieved for data prediction within the next 15 days.
+5) Stack is used for the prediction of the growth of the virus , basically, to store the previous data and leave the data for the last 7 days.
 
-        The working of the mathematical function is included in the submission as a pdf file (model_explaination.pdf). 
+            The working of the mathematical function is included in the submission as a pdf document. 
     
-<<<<<<< HEAD
-NOTE ->> We highly recommend you to go through the file (model_explaination.pdf) atleast once.    
-
-    Make sure all the following files are included in the same folder as our main.c file ,    Corona.c         -----:>
-=======
     Make sure all the following files are included in the same folder as our main.c file ,    main.c         -----:>
->>>>>>> c700805eefca36cb13392b72d53923a00858cccd
     
         1)  add.h
         2)  linked.h
@@ -131,9 +128,9 @@ NOTE ->> We highly recommend you to go through the file (model_explaination.pdf)
 This project was made by        ----------::>
 
                                                                                                     
-                                    Arihant Jain        -          1910110085                  
-                                    Bhaven Jain         -          1910110112                  
-                                    Devyansh Sehgal     -          1910110134                  
-                                    Sanskar Agarwal     -          1910110352                  
+                                    Arihant Jain        -          1910110085                
+                                    Bhaven Jain         -          1910110112                
+                                    Devyansh Sehgal     -          1910110134                
+                                    Sanskar Agarwal     -          1910110352                 
                                     Sarthak Khurana     -          1910110354                  
-                                                        
+                                                    
