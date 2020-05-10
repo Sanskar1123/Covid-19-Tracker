@@ -15,7 +15,8 @@ bool check_forLogin(char username[50], char password[20]){
     check_username = 1;
     if(strcmp(password1,password) == 0)
         return 1;
-    else{
+    else
+    {
         printf("Password does not match...\n");
         _getch();
         return 0;

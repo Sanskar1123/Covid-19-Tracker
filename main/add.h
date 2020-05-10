@@ -118,16 +118,16 @@ void write(node1 *head, char country[50]){
     exit(1);
   }
 
-  printf("Enter the date in the format DD.MM: ");
+  printf("\n\n\t\t\tEnter the date in the format DD.M: ");
   scanf("%f",&date);
   fflush(stdin);
-  printf("Enter the Total number of cases on %0.1f: ",date);
+  printf("\t\t\tEnter the Total number of cases on %0.1f: ",date);
   scanf("%d",&cases);
   fflush(stdin);
-  printf("Enter the number of Deaths: ");
+  printf("\t\t\tEnter the number of Deaths: ");
   scanf("%d",&deaths);
   fflush(stdin);
-  printf("Enter the number of Recovered cases: ");
+  printf("\t\t\tEnter the number of Recovered cases: ");
   scanf("%d",&recovered);
   fflush(stdin);
 
@@ -176,7 +176,7 @@ void displayLast_3(node1 *list){
   while(temp->next->next->next != NULL)
     temp = temp->next;
   while(temp != NULL){
-    printf("Date: %0.1f\tCases: %d\tDeaths: %d\tRecovered: %d\n", temp->date, temp->cases, temp->death, temp->recover);
+    printf("\t\t\tDate: %0.1f\tCases: %d\tDeaths: %d\tRecovered: %d\n", temp->date, temp->cases, temp->death, temp->recover);
     temp = temp->next;
   }
 }
