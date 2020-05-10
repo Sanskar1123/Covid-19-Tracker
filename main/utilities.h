@@ -17,3 +17,14 @@ void delay(int seconds){
   clock_t start = clock();
   while(clock() < start + milli);
 }
+
+void quit()
+{
+    clrscr();
+    gotoxy(75,18);
+    printf("!!!THANKYOU!!!");
+    gotoxy(72,20);
+    printf("STAY HOME STAY SAFE\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    delay(3);
+    exit(1);
+}

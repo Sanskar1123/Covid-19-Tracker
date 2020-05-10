@@ -261,11 +261,16 @@ void info(node *head)
   int TotalRecovered = Recovered(head, startingDate(head), endingDate(head));
   puts("");
   //printing the stored result
-  printf("Total cases: %d\t", EndDate(head, endingDate(head)));
-  printf("  Deaths: %d\t", TotalDeaths);
-  printf("  Recovered: %d\n", TotalRecovered);
-  printf("The overall growth rate of the virus: %0.2f\n", B);
+  gotoxy(30,10);
+  printf("Total cases               :           %d", EndDate(head, endingDate(head)));
+  gotoxy(30,11);
+  printf("Deaths                    :           %d", TotalDeaths);
+  gotoxy(30,12);
+  printf("Recovered                 :           %d", TotalRecovered);
+  gotoxy(30,13);
+  printf("Growth rate of the virus  :           %0.2f", B);
   puts("\n\n");
+
 
     while (fgets(ch,500,fptr) != NULL)
     {
@@ -275,7 +280,7 @@ void info(node *head)
     fclose(fptr);
   }
 
-  printf("\n\nPress to ESC to go back");
+  printf("\n\n\n  Press to ESC to go back");
     char back;
     s:
     back = _getch();
@@ -297,8 +302,10 @@ void betweenThe_dates(node *head){
   clrscr();
   start1 = startingDate(head);
   end1 = endingDate(head);
-  printf("\nInput dates in the format DD.M between: %.1f and %.1f\n\n", start1, end1);
-  printf("Enter the starting date in the format DD.MM: ");
+  gotoxy(20,10);
+  printf("Input dates in the format DD.M between: %.1f and %.1f", start1, end1);
+  gotoxy(20,13);
+  printf("Enter the starting date in the format DD.MM   :      ");
   scanf("%f",&start);
   //check if a valid date is entered
   int resultStart = check_start(head, start);
@@ -307,14 +314,15 @@ void betweenThe_dates(node *head){
     start1 = startingDate(head);
     end1 = endingDate(head);
     printf("\nInput dates in the format DD.MM between: %.1f and %.1f\n\n", start1, end1);
-    printf("Enter the starting date in the format DD.MM: ");
+    printf("Enter the starting date in the format DD.MM :      ");
     scanf("%f",&start);
     resultStart = check_start(head, start);
   }
 
   // input for the ending date
   fflush(stdin);
-  printf("Enter the end date in the format DD.MM: ");
+  gotoxy(20,15);
+  printf("Enter the end date in the format DD.MM        :      ");
   scanf("%f",&end);
   int resultEnd = check_end(head, end, start);
   //printf("%d ", resultEnd);
@@ -323,7 +331,7 @@ void betweenThe_dates(node *head){
     start1 = startingDate(head);
     end1 = endingDate(head);
     printf("\nInput dates in the format DD.MM between: %.1f and %.1f\n\n", start1, end1);
-    printf("Enter the end date in the format DD.MM: ");
+    printf("Enter the end date in the format DD.MM      :      ");
     scanf("%f",&end);
     resultEnd = check_end(head, end, start);
   }
@@ -334,14 +342,22 @@ void betweenThe_dates(node *head){
   int TotalRecovered = Recovered(head, start, end);
   puts("");
   //printing the stored result
-  printf("Total cases: %d\t", EndDate(head, end));
-  printf("Cases in between: %d\t", TotalCases);
-  printf("  Deaths: %d\t", TotalDeaths);
-  printf("  Recovered: %d\n", TotalRecovered);
-  printf("The growth rate of the virus between this time was: %0.2f\n", b);
-  printf("The overall growth rate of the virus: %0.2f\n", B);
+
+  printf("\t\t\tNew cases         :       %d\n", TotalCases);
+  printf("\t\t\tDeaths reported   :       %d\n", TotalDeaths);
+  printf("\t\t\tRecovered cases   :       %d\n\n", TotalRecovered);
+  printf("\t\t\tThe growth rate of the virus between this time was  : %0.2f\n", b);
+  printf("\t\t\tThe overall growth rate of the virus                : %0.2f\n\n", B);
+  if(b<B)
+  {
+      printf("\t\t\tHence, the growth rate between these days was lesser than the overall growth rate of virus");
+  }
+  else
+  {
+      printf("\t\t\tHence, the growth rate between these days was higher than the overall growth rate of virus");
+  }
   //display(head);
-  printf("\n\nPress to ESC to go back");
+  printf("\n\n\n  Press to ESC to go back");
     char back;
     s:
     back = _getch();
@@ -394,6 +410,7 @@ void prediction(node *list){
 	float endDate = endingDate(list);
 
 	int predict;
+	gotoxy(30,10);int j = 13;
 	printf("Enter the number of days upto which you want to see the predicted data: ");
 	scanf("%d",&predict);
 	while(predict < 0 || predict > 15){
@@ -403,13 +420,16 @@ void prediction(node *list){
 	}
     for(i = data_days; i<n+predict; i++)
     {
+        gotoxy(30,j);
         value =  a*pow(b, i);
         printf("The total infected population on %0.1f.20 will be around:\t", endDate);
-        printf("%0.0f\n",value);
+        printf("%0.0f",value);
         endDate += 1;
+        ++j;
     }
 
-    printf("\n\nThe predicted data is based on mathematical model and is subject to external circumstances....\n\n");
+    gotoxy(20,j+2);
+    printf("The predicted data is based on mathematical model and is subject to external circumstances....\n\n");
     printf("\n\nPress to ESC to go back");
 
     char back;
@@ -444,9 +464,25 @@ void display_user_menu(node *head)
     option = _getch();
     switch(option)
     {
-        case 27 :   deleteListDates(head);
-                    display_country_menu(0);
-                    break;
+        case 27 :       {
+                        char o;
+                        gotoxy(40,30);
+                        y:
+                        printf("Are you sure you want to quit?(Press Enter/ESC to quit/continue)");
+                        o = _getch();
+                        switch(o)
+                        {
+                            case 13 :   quit();
+
+                            case 27 :   clrscr();
+                                        goto user_menu;
+
+                            default :   goto y;
+
+                        }
+
+                        goto user_menu;
+                        }
         case 80 :   if(i<j+3)
                         i++;
                     clrscr();

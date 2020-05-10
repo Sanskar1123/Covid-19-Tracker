@@ -28,9 +28,8 @@ void function_add(){
   //write call
   write(head, country);
   printf("Thank You for adding to the database..\n");
-  printf("Stay Home, Stay Safe\n");
-  delay(8);
-  exit(-1);
+  delay(2);
+  quit();
 
 }
 
