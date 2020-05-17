@@ -422,7 +422,7 @@ void prediction(node *list){
     {
         gotoxy(30,j);
         value =  a*pow(b, i);
-        printf("The total infected population on %0.1f.20 will be around:\t", endDate);
+        printf("The total infected population on %0.1f.20 will be around:\t", endDate+1);
         printf("%0.0f",value);
         endDate += 1;
         ++j;
